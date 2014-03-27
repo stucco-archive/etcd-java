@@ -1,1 +1,4 @@
-#Nothing ignored yet
+.classpath
+/.settings
+/target
+
