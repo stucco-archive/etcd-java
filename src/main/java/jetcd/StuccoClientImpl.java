@@ -158,7 +158,12 @@ public class StuccoClientImpl implements StuccoClient {
               // It's a value, so save it
               value = node.getValue();
           }
-          builder.put(key, value);
+          
+          // Empty list entries result in nulls. The underlying map
+          // rejects them with an NPE, so don't try to put them in.
+          if (value != null) {
+              builder.put(key, value);
+          }
       }
       return builder.build();      
   }
